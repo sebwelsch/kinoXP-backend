@@ -1,4 +1,8 @@
 package dk.kea.kinobackend.repository;
 
-public class MovieRepository {
+import dk.kea.kinobackend.model.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
+
 }
