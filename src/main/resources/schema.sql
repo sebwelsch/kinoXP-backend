@@ -1,5 +1,5 @@
-CREATE DATABASE cinema_db;
-USE cinema_db;
+CREATE DATABASE kinoxp_db;
+USE kinoxp_db;
 
 -- Brugere (kun biografens personale)
 CREATE TABLE users (
