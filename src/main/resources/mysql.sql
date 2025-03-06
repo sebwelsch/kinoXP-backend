@@ -1,3 +1,6 @@
+CREATE DATABASE kinoxp_db;
+USE kinoxp_db;
+
 -- Brugere (kun biografens personale)
 CREATE TABLE IF NOT EXISTS users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,7 +39,7 @@ CREATE TABLE IF NOT EXISTS movies (
 );
 
 -- Forestillinger
-CREATE TABLE IF NOT EXISTS shows (
+CREATE  IF NOT EXISTS shows (
     show_id INT PRIMARY KEY AUTO_INCREMENT,
     movie_id INT NOT NULL,
     hall_id INT NOT NULL,
