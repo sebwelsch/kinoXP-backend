@@ -1,4 +1,4 @@
 package dk.kea.kinobackend.service;
 
-public class service {
+public class MovieService {
 }
