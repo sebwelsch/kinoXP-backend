@@ -26,7 +26,17 @@ public class MovieController {
         return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
     }
 
-    @GetMapping("/movies")
+    @PostMapping("/delete")
+    public ResponseEntity<String> deleteMovie(@RequestParam int movieId) {
+        if (movieRepository.existsById(movieId)) {
+            movieRepository.deleteById(movieId);
+            return new ResponseEntity<>("Movie deleted successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/all")
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }
