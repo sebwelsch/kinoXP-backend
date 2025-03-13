@@ -8,7 +8,8 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int booking_id;
-    private int show_id;
+    @Column(name = "show_id")
+    private int showId;
     private String time;
     private int seats;
     private String date;
@@ -18,7 +19,7 @@ public class Booking {
     public Booking() {}
 
     public Booking(int show_id, String time, int seats, String date, String customer_name, String customer_email) {
-        this.show_id = show_id;
+        this.showId = showId;
         this.time = time;
         this.seats = seats;
         this.date = date;
@@ -34,12 +35,12 @@ public class Booking {
         this.booking_id = booking_id;
     }
 
-    public int getShow_id() {
-        return show_id;
+    public int getShowId() {
+        return showId;
     }
 
-    public void setShow_id(int show_id) {
-        this.show_id = show_id;
+    public void setShowId(int showId) {
+        this.showId = showId;
     }
 
     public String getTime() {
