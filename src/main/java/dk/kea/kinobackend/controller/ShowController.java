@@ -33,7 +33,7 @@ public class ShowController {
     @PostMapping("/add")
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
 
-        boolean available = showRepository.findByHallIdAndTime(show.getHall_id(), show.getTime()).isEmpty();
+        boolean available = showRepository.findByHallIdAndTime(show.getHallId(), show.getTime()).isEmpty();
 
         if (!available) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);

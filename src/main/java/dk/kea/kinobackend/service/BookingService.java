@@ -29,7 +29,7 @@ public class BookingService {
         Optional<Show> show = showRepository.findById(show_id);
 
         if (booking.isPresent() && show.isPresent()) {
-            Optional<TheaterHall> hall = theaterHallRepository.findById(show.get().getHall_id());
+            Optional<TheaterHall> hall = theaterHallRepository.findById(show.get().getHallId());
             return hall.isPresent() && booking.get().getSeats() >= hall.get().getSeats();
         }
         return false;

@@ -15,7 +15,8 @@ public class Show {
     private String end_date;
     private String time;
 
-    public Show() {}
+    public Show() {
+    }
 
     public Show(int movie_id, int hallId, String start_date, String end_date, String time) {
         this.movie_id = movie_id;
