@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
-    Optional<Booking> findByShowIdAndDateAndTime(int showId, String date, String time);
+    Optional<Booking> findByShowIdAndDateAndTime(int show_id, String date, String time);
 }

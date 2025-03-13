@@ -35,25 +35,7 @@ public class MovieController {
     private String uploadDir;
 
 
-    @PostMapping("/add")
-    public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) {
-    
-        MultipartFile coverImage = newMovie.getCover_image();
-        if (!coverImage.isEmpty()) {
-            try {
-                String fileName = StringUtils.cleanPath(coverImage.getOriginalFilename());
-                Path targetLocation = Paths.get(uploadDir).resolve(fileName);
-                coverImage.transferTo(targetLocation);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            newMovie.setCover_image();
-        }
 
-        Movie savedMovie = movieRepository.save(newMovie);
-        return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
-    }
 
     @PostMapping("/delete")
     public ResponseEntity<String> deleteMovie(@RequestParam int movieId) {
