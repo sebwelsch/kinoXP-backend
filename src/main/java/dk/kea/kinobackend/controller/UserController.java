@@ -2,7 +2,6 @@ package dk.kea.kinobackend.controller;
 
 import dk.kea.kinobackend.model.User;
 import dk.kea.kinobackend.repository.UserRepository;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,26 +23,23 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody User user, HttpSession session) {
+    public ResponseEntity<String> signup(@RequestBody User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already taken");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username taken");
         }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Use injected encoder
-        User loggedInUser = userRepository.save(user);
-
-        session.setAttribute("loggedInUser", loggedInUser);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
 
         return ResponseEntity.ok("User registered successfully");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user, HttpSession session) {
+    public ResponseEntity<String> login(@RequestBody User user) {
         Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
 
         if (existingUser.isPresent() &&
                 passwordEncoder.matches(user.getPassword(), existingUser.get().getPassword())) {
-            session.setAttribute("user", user.getUsername());
             return ResponseEntity.ok("Login successful");
         }
 
