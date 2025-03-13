@@ -1,7 +1,6 @@
 package dk.kea.kinobackend.model;
 
 import jakarta.persistence.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "users")
@@ -21,7 +20,7 @@ public class User {
         this.password = password;
     }
     public void setPassword(String password) {
-        this.password = new BCryptPasswordEncoder().encode(password);
+        this.password = password;
     }
 
     public int getId() {
