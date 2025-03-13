@@ -1,6 +1,7 @@
 package dk.kea.kinobackend.controller;
 
 import dk.kea.kinobackend.model.Movie;
+import dk.kea.kinobackend.model.Show;
 import dk.kea.kinobackend.repository.MovieRepository;
 import dk.kea.kinobackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class MovieController {
 
     @Autowired
     MovieRepository movieRepository;
+
 
     @PostMapping("/add")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) {
