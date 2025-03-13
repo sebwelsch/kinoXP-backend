@@ -2,6 +2,7 @@ package dk.kea.kinobackend.controller;
 
 import dk.kea.kinobackend.model.Category;
 import dk.kea.kinobackend.model.Movie;
+import dk.kea.kinobackend.model.Show;
 import dk.kea.kinobackend.repository.MovieRepository;
 import dk.kea.kinobackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,14 @@ public class MovieController {
     @Autowired
     MovieRepository movieRepository;
 
+
     @Value("/resources/img")
     private String uploadDir;
 
+
     @PostMapping("/add")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) {
-        // Saving cover image
+    
         MultipartFile coverImage = newMovie.getCover_image();
         if (!coverImage.isEmpty()) {
             try {
