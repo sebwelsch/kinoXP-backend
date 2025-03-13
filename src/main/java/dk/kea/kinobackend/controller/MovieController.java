@@ -2,7 +2,6 @@ package dk.kea.kinobackend.controller;
 
 import dk.kea.kinobackend.model.Category;
 import dk.kea.kinobackend.model.Movie;
-import dk.kea.kinobackend.model.Show;
 import dk.kea.kinobackend.repository.MovieRepository;
 import dk.kea.kinobackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +29,42 @@ public class MovieController {
     @Autowired
     MovieRepository movieRepository;
 
-
     @Value("/resources/img")
     private String uploadDir;
 
+    @PostMapping("/add")
+    public ResponseEntity<Movie> createMovie(@RequestParam("name") String name,
+                                             @RequestParam("description") String description,
+                                             @RequestParam("age_rating") int age_rating,
+                                             @RequestParam("category") String category,
+                                             @RequestParam("actors") String actors,
+                                             @RequestParam("duration") int duration,
+                                             @RequestParam("coverImage") MultipartFile coverImage) {
+        // Saving cover image and setting file path for DB
+        if (!coverImage.isEmpty()) {
+            try {
+                String fileName = StringUtils.cleanPath(coverImage.getOriginalFilename());
+                Path targetLocation = Paths.get(uploadDir).resolve(fileName);
+                coverImage.transferTo(targetLocation);
 
+                // setting file path
+                String coverImagePath = uploadDir + fileName;
+                Movie newMovie = new Movie(name, description, age_rating, category, actors, duration, coverImagePath);
+                Movie savedMovie = movieRepository.save(newMovie);
 
+                return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // setting file path to default if no image is provided
+            String coverImagePath = uploadDir + "default.png";
+            Movie newMovie = new Movie(name, description, age_rating, category, actors, duration, coverImagePath);
+            Movie savedMovie = movieRepository.save(newMovie);
+
+            return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
+        }
+    }
 
     @PostMapping("/delete")
     public ResponseEntity<String> deleteMovie(@RequestParam int movieId) {
