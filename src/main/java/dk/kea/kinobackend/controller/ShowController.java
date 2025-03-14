@@ -22,7 +22,6 @@ public class ShowController {
     private ShowRepository showRepository;
 
 
-
     @GetMapping("/all")
     public List<Show> getAllShows() {
         return showRepository.findAll();

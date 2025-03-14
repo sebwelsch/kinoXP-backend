@@ -16,7 +16,8 @@ public class Booking {
     private String customer_name;
     private String customer_email;
 
-    public Booking() {}
+    public Booking() {
+    }
 
     public Booking(int show_id, String time, int seats, String date, String customer_name, String customer_email) {
         this.showId = showId;

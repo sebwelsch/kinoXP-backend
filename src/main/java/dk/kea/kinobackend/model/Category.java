@@ -6,5 +6,5 @@ public enum Category {
     COMEDY,
     THRILLER,
     HORROR,
-    SCIENCE_FICTION;
+    SCIENCE_FICTION
 }

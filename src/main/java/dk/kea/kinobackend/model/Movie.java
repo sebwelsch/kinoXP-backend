@@ -16,7 +16,8 @@ public class Movie {
     private int duration;
     private String cover_image;
 
-    public Movie() {}
+    public Movie() {
+    }
 
     public Movie(String name, String description, int age_rating, String category, String actors, int duration, String cover_image) {
         this.name = name;

@@ -18,7 +18,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @GetMapping("/all")
-    public List<Booking> getAllBookings(){
+    public List<Booking> getAllBookings() {
         return bookingService.getAllBookings();
     }
 
@@ -44,5 +44,15 @@ public class BookingController {
         );
 
         return new ResponseEntity<>(booking, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteBooking(@PathVariable int id) {
+        boolean deleted = bookingService.deleteBooking(id);
+        if (deleted) {
+            return new ResponseEntity<>("Booking deleted successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Booking not found", HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -26,10 +26,9 @@ public class ShowService {
     public List<String> getAvailableTimes(int movieId, String date) {
         return showRepository.findByMovieIdAndStartDate(movieId, date).stream()
                 .flatMap(show -> Stream.of(show.getTime().split(",")))
-                .map(String::trim)  // Trim any extra spaces around times
+                .map(String::trim)
                 .collect(Collectors.toList());
     }
-
 
 
 }

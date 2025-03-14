@@ -13,7 +13,8 @@ public class TheaterHall {
     private int seats;
     private int rows;
 
-    public TheaterHall() {}
+    public TheaterHall() {
+    }
 
     public TheaterHall(int cinema_id, String name, int seats, int rows) {
         this.cinema_id = cinema_id;
