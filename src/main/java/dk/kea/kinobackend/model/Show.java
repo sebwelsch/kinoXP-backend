@@ -9,7 +9,7 @@ public class Show {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int show_id;
     private int movie_id;
-    @Column(name = "hallId")
+    @Column(name = "hall_id")
     private int hallId;
     private String start_date;
     private String end_date;

@@ -25,7 +25,9 @@ public class BookingController {
     @PostMapping("/book")
     public ResponseEntity<Booking> bookSeats(@RequestParam int showId, @RequestParam String date,
                                              @RequestParam String time, @RequestParam int seatsToBook,
-                                             @RequestParam String customerName, @RequestParam String customerEmail) {
+                                             @RequestParam String customerName, @RequestParam String customerEmail)
+
+    {
         if (bookingService.isShowFullyBooked(showId, date, time)) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
