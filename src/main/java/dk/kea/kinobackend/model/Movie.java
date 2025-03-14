@@ -7,8 +7,7 @@ import jakarta.persistence.*;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id")
-    private int movieId;
+    private int movie_id;
     private String name;
     private String description;
     private int age_rating;
@@ -30,12 +29,12 @@ public class Movie {
         this.cover_image = cover_image;
     }
 
-    public int getMovieId() {
-        return movieId;
+    public int getMovie_id() {
+        return movie_id;
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
     }
 
     public String getName() {
