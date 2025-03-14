@@ -9,6 +9,7 @@ import dk.kea.kinobackend.repository.TheaterHallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,5 +48,9 @@ public class BookingService {
             Booking newBooking = new Booking(show_id, time, seatsToBook, date, customerName, customerEmail);
             return bookingRepository.save(newBooking);
         }
+    }
+
+    public List<Booking> getAllBookings() {
+        return bookingRepository.findAll();
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("bookings")
 @CrossOrigin(origins = "*")
@@ -14,6 +16,11 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
+
+    @GetMapping("/all")
+    public List<Booking> getAllBookings(){
+        return bookingService.getAllBookings();
+    }
 
     @GetMapping("/is-full")
     public boolean isShowFullyBooked(@RequestParam int showId, @RequestParam String date, @RequestParam String time) {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("shows")
+@RequestMapping("/shows")
 @CrossOrigin(origins = "*")
 public class ShowController {
 
@@ -20,6 +20,7 @@ public class ShowController {
 
     @Autowired
     private ShowRepository showRepository;
+
 
 
     @GetMapping("/all")
