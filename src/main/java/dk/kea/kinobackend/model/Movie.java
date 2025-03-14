@@ -1,7 +1,6 @@
 package dk.kea.kinobackend.model;
 
 import jakarta.persistence.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "movies")
