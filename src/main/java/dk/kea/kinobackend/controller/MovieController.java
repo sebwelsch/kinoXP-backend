@@ -3,28 +3,19 @@ package dk.kea.kinobackend.controller;
 import dk.kea.kinobackend.model.Category;
 import dk.kea.kinobackend.model.Movie;
 import dk.kea.kinobackend.repository.MovieRepository;
-import dk.kea.kinobackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.io.*;
 
 @RestController
 @RequestMapping("movies")
 @CrossOrigin(origins = "*")
 public class MovieController {
-
-    @Autowired
-    MovieService movieService;
 
     @Autowired
     MovieRepository movieRepository;

@@ -2,7 +2,6 @@ package dk.kea.kinobackend.controller;
 
 import dk.kea.kinobackend.model.TheaterHall;
 import dk.kea.kinobackend.repository.TheaterHallRepository;
-import dk.kea.kinobackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +13,6 @@ import java.util.List;
 @RequestMapping("theaterhalls")
 @CrossOrigin(origins = "*")
 public class TheaterHallController {
-
-    @Autowired
-    MovieService movieService;
 
     @Autowired
     TheaterHallRepository theaterHallRepository;
