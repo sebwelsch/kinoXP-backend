@@ -15,24 +15,27 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-
     @GetMapping("/is-full")
     public boolean isShowFullyBooked(@RequestParam int showId, @RequestParam String date, @RequestParam String time) {
         return bookingService.isShowFullyBooked(showId, date, time);
     }
 
-
     @PostMapping("/book")
-    public ResponseEntity<Booking> bookSeats(@RequestParam int showId, @RequestParam String date,
-                                             @RequestParam String time, @RequestParam int seatsToBook,
-                                             @RequestParam String customerName, @RequestParam String customerEmail)
-
-    {
-        if (bookingService.isShowFullyBooked(showId, date, time)) {
+    public ResponseEntity<Booking> bookSeats(@RequestBody Booking newBooking) {
+        // check if seats are available
+        if (bookingService.isShowFullyBooked(newBooking.getShowId(), newBooking.getDate(), newBooking.getTime())) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
-        Booking booking = bookingService.bookSeats(showId, date, time, seatsToBook, customerName, customerEmail);
+        Booking booking = bookingService.bookSeats(
+                newBooking.getShowId(),
+                newBooking.getDate(),
+                newBooking.getTime(),
+                newBooking.getSeats(),
+                newBooking.getCustomer_name(),
+                newBooking.getCustomer_email()
+        );
+
         return new ResponseEntity<>(booking, HttpStatus.CREATED);
     }
 }

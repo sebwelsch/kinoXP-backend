@@ -8,20 +8,22 @@ public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int show_id;
-    private int movie_id;
+    @Column(name = "movie_id")
+    private int movieId;
     @Column(name = "hall_id")
     private int hallId;
-    private String start_date;
+    @Column(name = "start_date")
+    private String startDate;
     private String end_date;
     private String time;
 
     public Show() {
     }
 
-    public Show(int movie_id, int hallId, String start_date, String end_date, String time) {
-        this.movie_id = movie_id;
+    public Show(int movieId, int hallId, String startDate, String end_date, String time) {
+        this.movieId = movieId;
         this.hallId = hallId;
-        this.start_date = start_date;
+        this.startDate = startDate;
         this.end_date = end_date;
         this.time = time;
     }
@@ -34,12 +36,12 @@ public class Show {
         this.show_id = show_id;
     }
 
-    public int getMovie_id() {
-        return movie_id;
+    public int getMovieId() {
+        return movieId;
     }
 
-    public void setMovie_id(int movie_id) {
-        this.movie_id = movie_id;
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 
     public int getHallId() {
@@ -50,12 +52,12 @@ public class Show {
         this.hallId = hallId;
     }
 
-    public String getStart_date() {
-        return start_date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public String getEnd_date() {
