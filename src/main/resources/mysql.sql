@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS theater_halls (
     cinema_id INT NOT NULL,
     name VARCHAR(50) NOT NULL,
     seats INT NOT NULL,
-    rows INT NOT NULL,
+    `rows` INT NOT NULL,
     FOREIGN KEY (cinema_id) REFERENCES cinema(cinema_id) ON DELETE CASCADE
 );
 
@@ -39,16 +39,17 @@ CREATE TABLE IF NOT EXISTS movies (
 );
 
 -- Forestillinger
-CREATE  IF NOT EXISTS shows (
-    show_id INT PRIMARY KEY AUTO_INCREMENT,
-    movie_id INT NOT NULL,
-    hall_id INT NOT NULL,
-    start_date VARCHAR(20) NOT NULL,
-    end_date VARCHAR(20) NOT NULL,
-    time JSON NOT NULL DEFAULT ('["13:00", "17:00", "22:00"]'),
-    FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE,
-    FOREIGN KEY (hall_id) REFERENCES theater_halls(hall_id) ON DELETE CASCADE
+CREATE TABLE shows (
+show_id INT PRIMARY KEY AUTO_INCREMENT,
+movie_id INT NOT NULL,
+hall_id INT NOT NULL,
+start_date VARCHAR(20) NOT NULL,
+end_date VARCHAR(20) NOT NULL,
+time JSON NOT NULL DEFAULT ('["13:00", "17:00", "22:00"]'),
+FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE,
+FOREIGN KEY (hall_id) REFERENCES theater_halls(hall_id) ON DELETE CASCADE
 );
+
 
 -- Bookinger
 CREATE TABLE IF NOT EXISTS bookings (

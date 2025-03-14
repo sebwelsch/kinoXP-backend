@@ -7,7 +7,7 @@ INSERT INTO cinema (name, description, location) VALUES
 ('KinoXP', 'The worlds best cinema!', 'Copenhagen');
 
 -- Insert theater halls
-INSERT INTO theater_halls (cinema_id, name, seats, rows) VALUES
+INSERT INTO theater_halls (cinema_id, name, seats, `rows`) VALUES
 (1, 'Small Hall', 240, 20),
 (1, 'Large Hall', 400, 25);
 
