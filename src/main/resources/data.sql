@@ -1,6 +1,6 @@
 -- Insert sample users (cinema employees)
 INSERT INTO users (username, password) VALUES
-('admin', '$2a$10$FO.CdSO4lFbrYX1SHMakYeqarGqDTDcFdUvD1E7/PSts2lJvuSX5O');
+('admin', '$2a$10$H5GJscoD5p.U6Hyu1/cunu3z4QZ/HksjKU8h.YT1opL0xPrJHawJO');
 
 -- Insert sample cinema
 INSERT INTO cinema (name, description, location) VALUES
